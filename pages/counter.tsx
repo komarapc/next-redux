@@ -7,7 +7,7 @@ import Wrapper from "../components/layout/wrapper";
 import TotalCounter from "../components/pages/counter/total_click";
 import { decrement, increament, resetCounter, RootState } from "../store/redux";
 
-function Increament() {
+function CounterPage() {
   const dispatch = useDispatch();
   const router = useRouter();
   const click = useSelector((state: RootState) => state.counterReducer.value);
@@ -66,4 +66,4 @@ function Increament() {
   );
 }
 
-export default Increament;
+export default CounterPage;

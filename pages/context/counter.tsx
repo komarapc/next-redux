@@ -1,51 +1,59 @@
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import { createContext, Fragment, useReducer } from "react";
+import { useRouter } from "next/router";
+import { Fragment, useContext } from "react";
 import Container from "../../components/layout/container";
 import Wrapper from "../../components/layout/wrapper";
-import ContextCounterComponent from "../../components/pages/context/context-counter";
+import { StoreCounterContext } from "../../context/counter-context";
 
-const initialState: number = 0;
-export const StoreCounterContext: any = createContext(initialState);
-const reducer = (state: number, action: any) => {
-  switch (action) {
-    case "increment":
-      state += 1;
-      return state;
-    case "decrement":
-      state -= 1;
-      return state;
-    case "reset":
-      state = 0;
-      return state;
-    default:
-      return initialState;
-  }
-};
-
-function CounterContext() {
-  const [count, dispatch] = useReducer(reducer, initialState);
+export default function ContextCounterPage() {
+  const counterCtx: typeof StoreCounterContext =
+    useContext(StoreCounterContext);
+  const count = counterCtx.countContext;
+  const router = useRouter();
   return (
-    <StoreCounterContext.Provider
-      value={{ countContext: count, countDispatch: dispatch }}
-    >
-      <Fragment>
-        <Head>
-          <title>Counter with Context Reducer</title>
-        </Head>
-        <Wrapper>
-          <Container>
-            <h1 className="text-2xl text-slate-700 font-light">
-              Counter with Context Reducer
-            </h1>
-            <h1 className="font-semibold text-xl">Count: {count}</h1>
-            <div className="my-5">
-              <ContextCounterComponent></ContextCounterComponent>
-            </div>
-          </Container>
-        </Wrapper>
-      </Fragment>
-    </StoreCounterContext.Provider>
+    <Fragment>
+      <Head>
+        <title>Counter with context reducer</title>
+      </Head>
+      <Wrapper>
+        <Container>
+          <h1 className="text-2xl text-slate-700 font-light">
+            Counter with Context Reducer
+          </h1>
+          <h1 className="text-xl text-slate-700 font-semibold">
+            Count: {count}
+          </h1>
+          <div className="my-5">
+            <button
+              className="px-3 py-1 bg-blue-500 text-white hover:bg-blue-600"
+              onClick={() => counterCtx.countDispatch("increment")}
+            >
+              Increment
+            </button>
+            <button
+              className="px-3 py-1 bg-blue-500 text-white hover:bg-blue-600 mx-1"
+              onClick={() => counterCtx.countDispatch("decrement")}
+            >
+              Decrement
+            </button>
+            <button
+              className="px-3 py-1 bg-amber-500 text-white hover:bg-amber-600 mr-1"
+              onClick={() => counterCtx.countDispatch("reset")}
+            >
+              Reset
+            </button>
+            <button
+              className="px-3 py-1 bg-red-500 text-white hover:bg-red-600"
+              onClick={router.back}
+            >
+              <FontAwesomeIcon icon={faAngleLeft} className="mr-1" />
+              Back
+            </button>
+          </div>
+        </Container>
+      </Wrapper>
+    </Fragment>
   );
 }
-
-export default CounterContext;
