@@ -30,8 +30,8 @@ function Increament() {
       </Head>
       <Wrapper>
         <Container>
-          <h1 className="text-2xl text-slate-700 font-semibold">
-            {title_page}
+          <h1 className="text-2xl text-slate-700 font-light">
+            {`${title_page} with Redux`}
           </h1>
           <button
             className="px-3 py-1 m-1 bg-blue-500 text-white rounded hover:bg-blue-600"

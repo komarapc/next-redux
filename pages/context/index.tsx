@@ -12,7 +12,7 @@ export default function PageContext({ props }: any) {
   return (
     <Wrapper>
       <Container>
-        <h1 className="text-2xl text-slate-700 font-light">Page context</h1>
+        <h1 className="text-2xl text-slate-700 font-light">createContext</h1>
         <div>theme: {theme}</div>
         <button
           className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
