@@ -1,10 +1,12 @@
 import { PayloadAction } from "./../node_modules/@reduxjs/toolkit/src/createAction";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-// slice/reducer
+// initial state
 const initialState = {
   value: 0,
 };
+
+// reducer
 export const counterSlice = createSlice({
   name: "counters",
   initialState,
@@ -22,6 +24,7 @@ export const counterSlice = createSlice({
   },
 });
 
+// store
 export const store = configureStore({
   reducer: {
     counterReducer: counterSlice.reducer,
