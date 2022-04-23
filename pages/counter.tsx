@@ -14,14 +14,14 @@ function Increament() {
   const title_page = "Counter";
 
   const handleClickIncreament = () => {
-    dispatch(increament(0));
+    dispatch(increament());
   };
   const handleClickDecrement = () => {
     if (click <= 0) return;
-    dispatch(decrement(0));
+    dispatch(decrement());
   };
   const handleClickResetConter = () => {
-    dispatch(resetCounter(0));
+    dispatch(resetCounter());
   };
   return (
     <Fragment>

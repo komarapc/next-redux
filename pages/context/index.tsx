@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment, useContext } from "react";
 import Container from "../../components/layout/container";
@@ -31,6 +32,13 @@ export default function PageContext({ props }: any) {
           >
             Back
           </button>
+          <div className="my-5">
+            <Link href={"/context/counter"}>
+              <a className="px-3 py-1 bg-blue-500 text-white hover:bg-blue-600 rounded">
+                Counter with Context reducer
+              </a>
+            </Link>
+          </div>
         </Container>
       </Wrapper>
     </Fragment>
