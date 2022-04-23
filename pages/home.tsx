@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
@@ -8,6 +9,9 @@ export default function Homepage() {
   const router = useRouter();
   return (
     <Fragment>
+      <Head>
+        <title>Home</title>
+      </Head>
       <Wrapper>
         <Container>
           <h1 className="text-2xl text-slate-700 font-light">Homepage</h1>
